@@ -9,38 +9,33 @@ import static org.junit.Assert.assertEquals;
 @RunWith(Parameterized.class)
 public class BunTest {
     private final String bunName;
-    private final String expectedName;
     private final float bunPrice;
-    private final float expectedPrice;
     private Bun bun;
-    public BunTest(String bunName, String expectedName, float bunPrice, float expectedPrice) {
+    public BunTest(String bunName, float bunPrice) {
         this.bunName = bunName;
-        this.expectedName = expectedName;
         this.bunPrice = bunPrice;
-        this.expectedPrice = expectedPrice;
     }
-    @Parameterized.Parameters(name = "Test data: Название булочки {0}, цена: {2}")
+    @Parameterized.Parameters(name = "Test data: Название булочки {0}, цена: {1}")
     public static Object[][] getData() {
         return new Object[][]{
-                {"Вкусная булка", "Вкусная булка", 50, 50},
-                {"Luchshaja bulochka", "Luchshaja bulochka", -263, -263},
-                {"Interest булочка", "Interest булочка", 25.5F, 25.5F},
-                {"", "", 0, 0},
-                {null, null, 1, 1},
+                {"Вкусная булка", 50},
+                {"Luchshaja bulochka", -263},
+                {"Interest булочка", 25.5F},
+                {"", 0},
+                {null, 1},
         };
     }
     @Before
     public void setUp() {
         bun = new Bun(bunName, bunPrice);
     }
-
     @Test
     public void getBunName(){
-        assertEquals("Названия отличаются", expectedName, bun.getName());
+        assertEquals("Названия отличаются", bunName, bun.getName());
     }
     @Test
     public void getBunPrice(){
-        assertEquals("Цены отличаются", expectedPrice, bun.getPrice(), 0);
+        assertEquals("Цены отличаются", bunPrice, bun.getPrice(), 0);
     }
 
 }
