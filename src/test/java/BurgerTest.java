@@ -2,6 +2,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
 import praktikum.Bun;
 import praktikum.Burger;
@@ -20,6 +21,10 @@ public class BurgerTest {
     Bun bun;
     @Mock
     Ingredient ingredient;
+    @Mock
+    Ingredient ingredientSauce;
+    @Mock
+    Ingredient ingredientFilling;
     private Burger burger;
 
     @Before
@@ -38,5 +43,23 @@ public class BurgerTest {
         int ListBeforeAdding = burger.ingredients.size();
         burger.addIngredient(ingredient);
         assertTrue("Список ингредиентов не увеличился", burger.ingredients.size() > ListBeforeAdding);
+    }
+
+    @Test
+    public void removeIngredientCheck() {
+        burger.addIngredient(ingredient);
+        int ListBeforeRemove = burger.ingredients.size();
+        burger.removeIngredient(0);
+        assertTrue("Список ингредиентов не уменьшился", ListBeforeRemove > burger.ingredients.size());
+    }
+    @Test
+    public void moveIngredientCheck() {
+        String expectedFillingName = "две мясных котлеты гриль";
+        burger.addIngredient(ingredient);
+        burger.addIngredient(ingredientSauce);
+        burger.addIngredient(ingredientFilling);
+        Mockito.when(ingredientFilling.getName()).thenReturn(expectedFillingName);
+        burger.moveIngredient(2,0);
+        assertEquals("Ингредиент не переместился", ingredientFilling.getName(), burger.ingredients.get(0).getName());
     }
 }
