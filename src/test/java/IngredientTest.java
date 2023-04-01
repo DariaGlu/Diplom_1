@@ -19,12 +19,12 @@ public class IngredientTest {
     }
 
     @Test
-    public void getIngredientName() {
+    public void getIngredientNameReturnsEnteredValueTrue() {
         assertEquals("Названия отличаются", INGREDIENT_NAME, ingredient.getName());
     }
 
     @Test
-    public void getIngredientPrice() {
+    public void getIngredientPriceReturnsEnteredValueTrue() {
         assertEquals("Цены отличаются", INGREDIENT_PRICE, ingredient.getPrice(), 0);
     }
 

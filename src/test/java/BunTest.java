@@ -15,12 +15,12 @@ public class BunTest {
     }
 
     @Test
-    public void getBunName() {
+    public void getBunNameReturnsEnteredValueTrue() {
         assertEquals("Названия отличаются", BUN_NAME, bun.getName());
     }
 
     @Test
-    public void getBunPrice() {
+    public void getBunPriceReturnsEnteredValueTrue() {
         assertEquals("Цены отличаются", BUN_PRICE, bun.getPrice(), 0);
     }
 

@@ -34,7 +34,7 @@ public class IngredientTypeTest {
     }
 
     @Test
-    public void getIngredientType() {
+    public void getIngredientTypeReturnsEnteredValueTrue() {
         assertEquals("Типы начинок отличаются", ingredientType, ingredient.getType());
     }
 }

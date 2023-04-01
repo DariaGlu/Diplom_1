@@ -41,20 +41,20 @@ public class BurgerTest {
     }
 
     @Test
-    public void setBunCheck() {
+    public void checkSeatedBunIsReturnedTrue() {
         burger.setBuns(bun);
         assertEquals("Булочки отличаются", bun, burger.bun);
     }
 
     @Test
-    public void addIngredientCheck() {
+    public void checkIngredientIsAddedTrue() {
         int ListBeforeAdding = burger.ingredients.size();
         burger.addIngredient(ingredient1);
         assertTrue("Список ингредиентов не увеличился", burger.ingredients.size() > ListBeforeAdding);
     }
 
     @Test
-    public void removeIngredientCheck() {
+    public void checkIngredientIsRemovedTrue() {
         burger.addIngredient(ingredient1);
         int ListBeforeRemove = burger.ingredients.size();
         burger.removeIngredient(0);
@@ -62,7 +62,7 @@ public class BurgerTest {
     }
 
     @Test
-    public void moveIngredientCheck() {
+    public void checkIngredientIsMovedTrue() {
         int oldIndex = 1;
         int newIndex = 0;
         burger.addIngredient(ingredient1);
@@ -72,7 +72,7 @@ public class BurgerTest {
     }
 
     @Test
-    public void burgerGetPrice() {
+    public void burgerGetPriceIsCorrect() {
         float totalPrice = BUN_PRICE * 2 + INGREDIENT_PRICE;
         burger.setBuns(bun);
         burger.addIngredient(ingredient1);
@@ -80,7 +80,7 @@ public class BurgerTest {
     }
 
     @Test
-    public void burgerGetReceipt() {
+    public void burgerGetReceiptIsCorrect() {
         burger.setBuns(bun);
         burger.addIngredient(ingredient1);
         String totalReceipt = String.format("(==== %s ====)%n", BUN_NAME) +
